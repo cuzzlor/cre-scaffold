@@ -9,6 +9,7 @@ There is a branch for each step showing the completed step state. Master reflect
 
 ## Step 1 - create the app
 Generate a scaffolded app using the single [create-react-app](https://create-react-app.dev/) command using the TypeScript template:
+
 ```
 npx create-react-app my-app --template typescript
 ```
@@ -17,7 +18,12 @@ npx create-react-app my-app --template typescript
 Add VS Code launch and attach debug configurations
 
 
-
+## Step 3 - install Material UI
+Following the [steps here](https://material-ui.com/getting-started/installation/) we add the:
+- Material UI library
+- Roboto Font
+- Font Icons
+- SVG Icons
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
