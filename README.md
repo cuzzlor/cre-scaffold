@@ -67,6 +67,16 @@ We will start off making the layout more 'mobile first' with a container + maxWi
 - create a component called MenuBar
 - add some styles to the MenuBar component
 
+## Step 8 - add a couple of different 'pages' or 'features' with routing
+
+We will install react-router-dom and add:
+
+- a 'landing' page for the default route '/'
+- a 'survey' page for 'survey'
+- a button on each one to navigate between
+
+# Create React App documentation
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
