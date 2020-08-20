@@ -59,6 +59,14 @@ Now we are about to write some code:
   - create and apply the [dark theme](https://material-ui.com/customization/theming/)
   - use [MUI Typography](https://material-ui.com/components/typography/)
 
+## Step 7 - add basic layout
+
+We will start off making the layout more 'mobile first' with a container + maxWidth and menu bar:
+
+- add a responsive [Container](https://material-ui.com/components/container/)
+- create a component called MenuBar
+- add some styles to the MenuBar component
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
