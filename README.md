@@ -1,13 +1,17 @@
 # React app scaffolding demo
+
 A step-by-step demo of scaffolding an app using [create-react-app + TypeScript](https://create-react-app.dev/docs/adding-typescript/#installation) + [Material UI](https://material-ui.com/)
 
 ## Prerequisistes
+
 Then only dependency is to install the latest [LTS version of NodeJS](https://nodejs.org/en/download/)
 
 ## Navigating this demo
+
 There is a branch for each step showing the completed step state. Master reflects the final step state. You can jump between branches to view the completed step or compare branches to see the difference.
 
 ## Step 1 - create the app
+
 Generate a scaffolded app using the single [create-react-app](https://create-react-app.dev/) command using the TypeScript template:
 
 ```
@@ -15,31 +19,38 @@ npx create-react-app my-app --template typescript
 ```
 
 ## Step 2 - add local debugging support for VS Code
+
 Add VS Code launch and attach debug configurations
 
 ## Step 3 - install Material UI
+
 Following the [steps here](https://material-ui.com/getting-started/installation/) we add the:
+
 - Material UI library
 - Roboto Font
 - Font Icons
 - SVG Icons
 
 ## Step 4 - configure Material UI
+
 Follow the [minimizing bundle size](https://material-ui.com/guides/minimizing-bundle-size/#when-and-how-to-use-tree-shaking) guide. This is an optimisation but is nice to do upfront as standard.
 
 We add:
+
 - babel-plugin-transform-imports
-- react-app-rewired 
+- react-app-rewired
 - customize-cra
 - some babel config
 - a function in `customize-cra` to apply the babel config
 
+## Step 5 - configure VS code auto formatting
 
+Now we are about to write some code:
 
-
+- add .editorconfig and .prettierrc
+- turn on auto format on save (no manual formatting or disagreements required)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 
 ## Available Scripts
 
