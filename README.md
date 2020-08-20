@@ -17,13 +17,26 @@ npx create-react-app my-app --template typescript
 ## Step 2 - add local debugging support for VS Code
 Add VS Code launch and attach debug configurations
 
-
 ## Step 3 - install Material UI
 Following the [steps here](https://material-ui.com/getting-started/installation/) we add the:
 - Material UI library
 - Roboto Font
 - Font Icons
 - SVG Icons
+
+## Step 4 - configure Material UI
+Follow the [minimizing bundle size](https://material-ui.com/guides/minimizing-bundle-size/#when-and-how-to-use-tree-shaking) guide. This is an optimisation but is nice to do upfront as standard.
+
+We add:
+- babel-plugin-transform-imports
+- react-app-rewired 
+- customize-cra
+- some babel config
+- a function in `customize-cra` to apply the babel config
+
+
+
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
