@@ -50,6 +50,15 @@ Now we are about to write some code:
 - add .editorconfig and .prettierrc
 - turn on auto format on save (no manual formatting or disagreements required)
 
+## Step 6 - use Material UI
+
+- delete the OOTB CRA styling and HTML
+- follow the [Usage page](https://material-ui.com/getting-started/usage/)
+  - add the responsive meta tag
+  - add [CssBaseline](https://material-ui.com/components/css-baseline/)
+  - create and apply the [dark theme](https://material-ui.com/customization/theming/)
+  - use [MUI Typography](https://material-ui.com/components/typography/)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
