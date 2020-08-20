@@ -8,11 +8,13 @@ Then only dependency is to install the latest [LTS version of NodeJS](https://no
 There is a branch for each step showing the completed step state. Master reflects the final step state. You can jump between branches to view the completed step or compare branches to see the difference.
 
 ## Step 1 - create the app
-This step generates a scaffolded app using the single [create-react-app](https://create-react-app.dev/) command using the TypeScript template:
+Generate a scaffolded app using the single [create-react-app](https://create-react-app.dev/) command using the TypeScript template:
 ```
 npx create-react-app my-app --template typescript
 ```
 
+## Step 2 - add local debugging support for VS Code
+Add VS Code launch and attach debug configurations
 
 
 
