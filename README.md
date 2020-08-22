@@ -75,6 +75,20 @@ We will install react-router-dom and add:
 - a 'survey' page for 'survey'
 - a button on each one to navigate between
 
+## Step 9 - call a REST API with axios + axios-hooks
+
+We will start off basic:
+
+- npm install axios axios-hooks
+- use the useAxios hook to call https://icanhazdadjoke.com/ random joke API
+- display the text
+- hook up a button to use the refetch function and loading state
+
+Also add some more DX stuff:
+
+- create a list of recommended extensions (eslint, prettier, editorconfig support)
+- local settings to tell VS code to use prettier-vscode extension for formatting
+
 # Create React App documentation
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
