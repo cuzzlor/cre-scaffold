@@ -98,6 +98,12 @@ Also add some more DX stuff:
 - Consider the complexity of this code and alternatives
 - Consider alternatives for where to embed 'behaviour' such as asynchronous IO (in presentation components, container components or outside components, e.g. in Redux action creators that can be use anywhere)
 
+## Step 11 - create a 3 page survey using Material UI input components
+
+- Create 3 survey page components to display (Page1, Page2, Page3)
+- Add nested routing under /survey to navigate between the page components
+- Add some MUI input components to each page
+
 # Create React App documentation
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
