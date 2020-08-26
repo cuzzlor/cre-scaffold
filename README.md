@@ -89,6 +89,15 @@ Also add some more DX stuff:
 - create a list of recommended extensions (eslint, prettier, editorconfig support)
 - local settings to tell VS code to use prettier-vscode extension for formatting
 
+## Step 10 - use configuration + handle network events (pending requests, errors)
+
+- No one likes hard coded endpoint addresses, set up a .env file with config
+- It's nice to be able to see an indication of network calls in progress, lets add support for app-level network status through axios interceptors
+- Create a hook that supports communication from non-react code (axios) to React code via useEffect (and useState)
+- Create a NetworkErrorAlert component to show network failures as error messages
+- Consider the complexity of this code and alternatives
+- Consider alternatives for where to embed 'behaviour' such as asynchronous IO (in presentation components, container components or outside components, e.g. in Redux action creators that can be use anywhere)
+
 # Create React App documentation
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -1,14 +1,9 @@
 import { Button, Grid, Typography } from '@material-ui/core';
-import useAxios from 'axios-hooks';
 import React from 'react';
+import { useAxios } from '../../api/axios';
 
 export function Landing() {
-  const [{ data, loading }, refetch] = useAxios({
-    baseURL: 'https://icanhazdadjoke.com/',
-    headers: {
-      Accept: 'application/json',
-    },
-  });
+  const [{ data, loading }, refetch] = useAxios('/');
   return (
     <React.Fragment>
       <Typography variant="h2" align="center">

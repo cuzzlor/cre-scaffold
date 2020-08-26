@@ -6,6 +6,8 @@ import './App.css';
 import MenuBar from './layout/MenuBar';
 import { Landing } from './features/landing';
 import { Survey } from './features/survey';
+import { NetworkStatusStrip } from './layout/NetworkStatusStrip';
+import { NetworkErrorAlert } from './layout/NetworkErrorAlert';
 
 const darkTheme = createMuiTheme({
   palette: { type: 'light' },
@@ -16,6 +18,8 @@ function App() {
     <MuiThemeProvider theme={darkTheme}>
       <CssBaseline />
       <MenuBar />
+      <NetworkStatusStrip />
+      <NetworkErrorAlert />
       <Container maxWidth="sm">
         <Router>
           <Switch>
