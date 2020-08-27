@@ -104,6 +104,14 @@ Also add some more DX stuff:
 - Add nested routing under /survey to navigate between the page components
 - Add some MUI input components to each page
 
+## Step 12 - add state for survey pages and the parent survey component
+
+- Maintain state within each component and use a callback to notify the main survey component when each section is complete
+
+- Consider the amount of boilerplate for 'controlled components'
+- Consider the amount of code to write validation manually
+- Look at some form validation libraries
+
 # Create React App documentation
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

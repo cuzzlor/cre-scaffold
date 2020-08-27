@@ -1,8 +1,8 @@
 import { Button, Typography } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import React from 'react';
-import { useRouteMatch } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useRouteMatch, Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -15,12 +15,30 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function Page1() {
+export interface Page1Data {
+  firstName?: string;
+  lastName?: string;
+}
+
+export function Page1({
+  data,
+  onComplete,
+}: {
+  data?: Page1Data;
+  onComplete?: (data: Page1Data) => void;
+}) {
   const classes = useStyles();
   const { path } = useRouteMatch();
 
+  const [firstName, setFirstName] = useState(data?.firstName || '');
+  const [lastName, setLastName] = useState(data?.lastName || '');
+
+  const handleNext = () => {
+    if (onComplete) onComplete({ firstName, lastName });
+  };
+
   return (
-    <form className={classes.root}>
+    <form className={classes.root} autoComplete="off">
       <Typography variant="h4" align="center">
         What's your name?
       </Typography>
@@ -29,15 +47,21 @@ export default function Page1() {
         label="First Name"
         variant="outlined"
         required
+        value={firstName}
+        onChange={(event) => setFirstName(event.target.value)}
       />
       <TextField
         id="outlined-basic"
         label="Last Name"
         variant="outlined"
         required
+        value={lastName}
+        onChange={(event) => setLastName(event.target.value)}
       />
 
-      <Button href={`${path}/page2`}>Next</Button>
+      <Button component={Link} to={`${path}/page2`} onClick={handleNext}>
+        Next
+      </Button>
     </form>
   );
 }

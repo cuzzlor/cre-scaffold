@@ -1,5 +1,6 @@
 import { Button, Grid, Typography } from '@material-ui/core';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useAxios } from '../../api/axios';
 
 export function Landing() {
@@ -11,7 +12,9 @@ export function Landing() {
       </Typography>
       <Grid container direction="column" alignItems="center">
         <Grid item>
-          <Button href="/survey">Start Survey</Button>
+          <Button component={Link} to="/survey">
+            Start Survey
+          </Button>
         </Grid>
         {data && (
           <React.Fragment>

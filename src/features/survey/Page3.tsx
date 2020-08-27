@@ -2,12 +2,12 @@ import {
   Button,
   FormControl,
   InputLabel,
-  Select,
   MenuItem,
+  Select,
   Typography,
 } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import React from 'react';
+import React, { useState } from 'react';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -20,8 +20,25 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function Page3() {
+export type AgeRange = 'Under 30' | '30 - 90' | 'Over 90';
+
+export interface Page3Data {
+  ageRange?: AgeRange;
+}
+
+export function Page3({
+  data,
+  onComplete,
+}: {
+  data?: Page3Data;
+  onComplete?: (data: Page3Data) => void;
+}) {
   const classes = useStyles();
+  const [ageRange, setAgeRange] = useState(data?.ageRange || '');
+
+  const onDone = () => {
+    if (onComplete) onComplete({ ageRange: ageRange as AgeRange });
+  };
 
   return (
     <form className={classes.root}>
@@ -34,14 +51,16 @@ export default function Page3() {
           labelId="demo-simple-select-outlined-label"
           id="demo-simple-select-outlined"
           label="Age"
+          value={ageRange}
+          onChange={(event) => setAgeRange(event.target.value as string)}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          <MenuItem value="Under 30">Under 30</MenuItem>
+          <MenuItem value="30 - 90">30 - 90</MenuItem>
+          <MenuItem value="Over 90">Over 90</MenuItem>
         </Select>
       </FormControl>
 
-      <Button>Done</Button>
+      <Button onClick={onDone}>Done</Button>
     </form>
   );
 }
