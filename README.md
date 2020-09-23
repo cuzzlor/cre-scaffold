@@ -112,6 +112,13 @@ Also add some more DX stuff:
 - Consider the amount of code to write validation manually
 - Look at some form validation libraries
 
+## Step 13 - use recoil state to maintain survey data
+
+- Add the recoil library
+- Create recoil `atom`s to hold each page's data
+- Create a recoil `selector` to represent the combined data across all pages
+- Refactor the parent component to `useRecoilState`
+
 # Create React App documentation
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

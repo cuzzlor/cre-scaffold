@@ -1,19 +1,26 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
-import { Page1Data, Page1 } from './Page1';
-import { Page2Data, Page2 } from './Page2';
-import { Page3Data, Page3 } from './Page3';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { Page1, Page1Data } from './Page1';
+import { Page2, Page2Data } from './Page2';
+import { Page3, Page3Data } from './Page3';
+import {
+  page1DataState,
+  page2DataState,
+  page3DataState,
+  surveyDataState,
+} from './state';
 
 export type SurveyData = Page1Data & Page2Data & Page3Data;
 
 export function Survey() {
   const { path } = useRouteMatch();
 
-  const [page1Data, setPage1Data] = useState<Page1Data>({});
-  const [page2Data, setPage2Data] = useState<Page2Data>({});
-  const [page3Data, setPage3Data] = useState<Page3Data>({});
+  const [page1Data, setPage1Data] = useRecoilState(page1DataState);
+  const [page2Data, setPage2Data] = useRecoilState(page2DataState);
+  const [page3Data, setPage3Data] = useRecoilState(page3DataState);
 
-  console.log({ ...page1Data, ...page2Data, ...page3Data });
+  console.log(useRecoilValue(surveyDataState));
 
   return (
     <Switch>
