@@ -3,6 +3,8 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import React, { useState } from 'react';
 import { useRouteMatch, Link } from 'react-router-dom';
+import { useRecoilValueLoadable } from 'recoil';
+import { dadJokeState } from '../../api/jokes';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,6 +39,8 @@ export function Page1({
     if (onComplete) onComplete({ firstName, lastName });
   };
 
+  const joke = useRecoilValueLoadable(dadJokeState);
+
   return (
     <form className={classes.root} autoComplete="off">
       <Typography variant="h4" align="center">
@@ -62,6 +66,10 @@ export function Page1({
       <Button component={Link} to={`${path}/page2`} onClick={handleNext}>
         Next
       </Button>
+
+      <Typography variant="body1" align="center">
+        {joke.state === 'loading' ? 'loading...' : joke.contents}
+      </Typography>
     </form>
   );
 }

@@ -2,7 +2,8 @@ import Snackbar from '@material-ui/core/Snackbar';
 import { makeStyles, Theme } from '@material-ui/core/styles';
 import MuiAlert, { AlertProps } from '@material-ui/lab/Alert';
 import React, { SyntheticEvent, useEffect, useState } from 'react';
-import { networkStateNotifier } from '../api/networkStatus';
+import { useNetworkLastError } from '../api/networkStatus';
+import { usePrevious } from '../utils';
 
 function Alert(props: AlertProps) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -20,21 +21,12 @@ const useStyles = makeStyles((theme: Theme) => ({
 export function NetworkErrorAlert() {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const [networkError, setNetworkError] = useState<string | undefined>(
-    undefined
-  );
-
-  const handleNetworkError = (error?: string) => {
-    setNetworkError(error);
-    setOpen(true);
-  };
+  const networkError = useNetworkLastError();
+  const lastNetworkError = usePrevious(networkError);
 
   useEffect(() => {
-    networkStateNotifier.subscribeToError(handleNetworkError);
-    return () => {
-      networkStateNotifier.unsubscribeFromError(setNetworkError);
-    };
-  }, []);
+    if (networkError && networkError !== lastNetworkError) setOpen(true);
+  }, [networkError, lastNetworkError]);
 
   const handleClose = (event?: SyntheticEvent, reason?: string) => {
     if (reason === 'clickaway') {
@@ -48,7 +40,7 @@ export function NetworkErrorAlert() {
     <div className={classes.root}>
       <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="error">
-          {networkError}
+          {networkError.message}
         </Alert>
       </Snackbar>
     </div>

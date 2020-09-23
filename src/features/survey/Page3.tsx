@@ -8,6 +8,8 @@ import {
 } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import React, { useState } from 'react';
+import { useRecoilValueLoadable } from 'recoil';
+import { dadJokeState } from '../../api/jokes';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -40,6 +42,8 @@ export function Page3({
     if (onComplete) onComplete({ ageRange: ageRange as AgeRange });
   };
 
+  const joke = useRecoilValueLoadable(dadJokeState);
+
   return (
     <form className={classes.root}>
       <Typography variant="h5" align="center">
@@ -61,6 +65,10 @@ export function Page3({
       </FormControl>
 
       <Button onClick={onDone}>Done</Button>
+
+      <Typography variant="body1" align="center">
+        {joke.state === 'loading' ? 'loading...' : joke.contents}
+      </Typography>
     </form>
   );
 }

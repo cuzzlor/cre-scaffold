@@ -1,10 +1,13 @@
 import { Button, Grid, Typography } from '@material-ui/core';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useAxios } from '../../api/axios';
+import { useRecoilValueLoadable } from 'recoil';
+import { dadJokeState, useDadJoke } from '../../api/jokes';
 
 export function Landing() {
-  const [{ data, loading }, refetch] = useAxios('/');
+  // preload app state
+  useRecoilValueLoadable(dadJokeState);
+  const [joke, getNextJoke] = useDadJoke();
   return (
     <React.Fragment>
       <Typography variant="h2" align="center">
@@ -16,17 +19,15 @@ export function Landing() {
             Start Survey
           </Button>
         </Grid>
-        {data && (
+        {joke && (
           <React.Fragment>
             <Grid item>
               <Typography variant="body2" align="center">
-                {data.joke}
+                {joke}
               </Typography>
             </Grid>
             <Grid item>
-              <Button disabled={loading} onClick={() => refetch()}>
-                Another Joke
-              </Button>
+              <Button onClick={() => getNextJoke()}>Another Joke</Button>
             </Grid>
           </React.Fragment>
         )}

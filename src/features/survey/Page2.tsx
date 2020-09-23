@@ -4,6 +4,8 @@ import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useRecoilValueLoadable } from 'recoil';
+import { dadJokeState } from '../../api/jokes';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -34,6 +36,8 @@ export function Page2({
     if (onComplete) onComplete({ coffeesPerDay });
   };
 
+  const joke = useRecoilValueLoadable(dadJokeState);
+
   return (
     <form className={classes.root}>
       <Typography variant="h5" align="center">
@@ -56,6 +60,10 @@ export function Page2({
       <Button component={Link} to={`page3`} onClick={handleNext}>
         Next
       </Button>
+
+      <Typography variant="body1" align="center">
+        {joke.state === 'loading' ? 'loading...' : joke.contents}
+      </Typography>
     </form>
   );
 }

@@ -119,6 +119,14 @@ Also add some more DX stuff:
 - Create a recoil `selector` to represent the combined data across all pages
 - Refactor the parent component to `useRecoilState`
 
+## Step 14 - refactor network status handling and API calls to use recoil
+
+- Recoil supports simple subscription to state changes (remove NetworkStateNotifier)
+- Set up atoms to store the number of active requests and the last network error
+- Call recoil `SetterOrUpdater<T>` from axios interceptors via `NetworkStatusProvider`, a simple component to call `useSetRecoilState` from React code and obtain the `SetterOrUpdater<T>`.
+- Export hooks to allow consumers to `useNetworkIsActive` and `useNetworkLastError` without access to the actual recoil state.
+- Use a recoil async selector to preload a dad joke from the landing page and display the result in each survey form page (demonstrates server state caching and preloading).
+
 # Create React App documentation
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
